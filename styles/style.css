@@ -1,1 +1,444 @@
-body{margin:0;font-family:Arial;background:linear-gradient(-45deg,#ffd6ea,#ffc0cb,#ffe4f1,#ffd1dc);background-size:400% 400%;animation:bg 12s ease infinite;overflow:hidden}main{display:flex;min-height:100vh;flex-direction:column;align-items:center;justify-content:center}h1{color:#fff}#gift{font-size:180px;cursor:pointer;animation:f 3s ease-in-out infinite;filter:drop-shadow(0 0 25px deeppink)}#gift:hover{animation:s .5s infinite}.card{background:#fff;padding:20px;border-radius:20px;text-align:center;box-shadow:0 10px 30px #0003}.card img{width:220px;border-radius:16px}.hide{display:none}.heart{position:fixed;font-size:24px;animation:up 6s linear forwards}@keyframes up{to{transform:translateY(-120vh)}}@keyframes bg{50%{background-position:100% 50%}}@keyframes f{50%{transform:translateY(-20px)}}@keyframes s{25%{transform:rotate(4deg)}50%{transform:rotate(-4deg)}}
+/* ===========================
+   happy-final-v2
+   created with love ❤️
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+    linear-gradient(
+        180deg,
+        #ffd6e8,
+        #ffe9f3,
+        #fff7fb
+    );
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    color:#444;
+}
+
+
+/* ===========================
+        floating hearts
+=========================== */
+
+.hearts{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:0;
+
+}
+
+
+/* ===========================
+        landing
+=========================== */
+
+#landing{
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:25px;
+
+}
+
+
+.container{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    max-width:420px;
+
+    text-align:center;
+
+}
+
+
+.small{
+
+    color:#ff5f9e;
+
+    margin-bottom:15px;
+
+    font-size:18px;
+
+}
+
+
+h1{
+
+    font-family:'Pacifico',cursive;
+
+    color:#ff4f95;
+
+    font-size:42px;
+
+    line-height:1.2;
+
+    margin-bottom:20px;
+
+}
+
+
+.subtitle{
+
+    color:#777;
+
+    font-size:17px;
+
+    line-height:30px;
+
+}
+
+
+/* ===========================
+          gift
+=========================== */
+
+#giftBox{
+
+    margin-top:45px;
+
+    animation:
+    bounce 2s infinite;
+
+}
+
+
+#giftBox img{
+
+    width:180px;
+
+    transition:.4s;
+
+    cursor:pointer;
+
+    filter:
+
+    drop-shadow(
+    0 15px 30px
+    rgba(255,70,150,.25)
+    );
+
+}
+
+
+#giftBox img:hover{
+
+    transform:
+    scale(1.08);
+
+}
+
+
+/* ===========================
+          button
+=========================== */
+
+button{
+
+    margin-top:40px;
+
+    border:none;
+
+    outline:none;
+
+    padding:
+
+    18px
+    40px;
+
+    border-radius:999px;
+
+    background:
+
+    linear-gradient(
+    90deg,
+    #ff75b7,
+    #ff9dca
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:
+
+    0 10px 30px
+
+    rgba(
+    255,
+    80,
+    150,
+    .35);
+
+    transition:.35s;
+
+}
+
+
+button:hover{
+
+    transform:
+
+    translateY(-4px);
+
+}
+
+
+/* ===========================
+      letter page
+=========================== */
+
+#letterPage{
+
+    display:none;
+
+    min-height:100vh;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:25px;
+
+}
+
+
+.card{
+
+    width:100%;
+
+    max-width:950px;
+
+    display:flex;
+
+    gap:30px;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+
+    rgba(255,255,255,.55);
+
+    backdrop-filter:
+
+    blur(18px);
+
+    border-radius:35px;
+
+    padding:35px;
+
+    box-shadow:
+
+    0 25px 60px
+
+    rgba(255,120,170,.2);
+
+}
+
+
+/* ===========================
+        photo
+=========================== */
+
+.photo{
+
+    flex:1;
+
+}
+
+
+.photo img{
+
+    width:100%;
+
+    border-radius:25px;
+
+    border:10px solid white;
+
+    box-shadow:
+
+    0 15px 35px
+
+    rgba(0,0,0,.12);
+
+}
+
+
+/* ===========================
+       letter
+=========================== */
+
+.letter{
+
+    flex:1.2;
+
+}
+
+
+.letter h2{
+
+    font-family:'Pacifico',cursive;
+
+    color:#ff4f95;
+
+    font-size:34px;
+
+    margin-bottom:20px;
+
+}
+
+
+#typingText{
+
+    color:#666;
+
+    line-height:34px;
+
+    font-size:17px;
+
+}
+
+
+.letter h4{
+
+    margin-top:35px;
+
+    color:#ff4f95;
+
+    font-size:25px;
+
+}
+
+
+/* ===========================
+       animation
+=========================== */
+
+@keyframes bounce{
+
+0%,100%{
+
+transform:
+translateY(0);
+
+}
+
+50%{
+
+transform:
+translateY(-15px);
+
+}
+
+}
+
+
+/* ===========================
+      mobile
+=========================== */
+
+@media(max-width:768px){
+
+.card{
+
+flex-direction:column;
+
+padding:25px;
+
+}
+
+.photo{
+
+width:100%;
+
+}
+
+.photo img{
+
+max-width:320px;
+
+margin:auto;
+
+display:block;
+
+}
+
+h1{
+
+font-size:33px;
+
+}
+
+.subtitle{
+
+font-size:16px;
+
+line-height:28px;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+.letter h2{
+
+font-size:28px;
+
+text-align:center;
+
+}
+
+#typingText{
+
+font-size:16px;
+
+line-height:32px;
+
+}
+
+}
