@@ -1,0 +1,1 @@
+Letakkan foto di assets/foto.jpg
