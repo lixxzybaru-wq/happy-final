@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,20 +21,15 @@
 
 <body>
 
-<div class="floating-hearts"></div>
-<div class="sparkles"></div>
-
-<!-- ========================= -->
-<!-- Landing Page -->
-<!-- ========================= -->
+<div class="hearts"></div>
 
 <section id="landing">
 
-<div class="overlay"></div>
-
 <div class="landing-card">
 
-<h4>💕 For My Favorite Girl 💕</h4>
+<h4>
+💕 For My Favorite Girl 💕
+</h4>
 
 <h1>
 Happy National
@@ -41,13 +38,17 @@ Girlfriend Day
 </h1>
 
 <p>
-Aku punya sesuatu yang spesial buat
-cewek paling lucu di dunia 🤍
+
+Aku punya sesuatu yang spesial
+buat cewek paling lucu di dunia 🤍
+
 </p>
 
 <div id="giftBox">
 
-<img src="assets/gift.png" alt="Gift">
+<img
+src="assets/gift.png"
+alt="Gift">
 
 </div>
 
@@ -60,10 +61,6 @@ Buka Hadiah 🎁
 </div>
 
 </section>
-
-<!-- ========================= -->
-<!-- Letter Page -->
-<!-- ========================= -->
 
 <section id="letterPage">
 
@@ -86,8 +83,7 @@ Happy My Girlfriend 💖
 </h2>
 
 <div id="typingText">
-
-Happy National Girlfriend Day sayangkuu ❤️<br><br>
+  Happy National Girlfriend Day sayangkuu ❤️<br><br>
 
 Makasih yaa karena udah hadir di hidup aku.
 
@@ -109,7 +105,15 @@ Aku mungkin belum sempurna.
 
 Tapi aku akan selalu berusaha jadi yang terbaik buat kamu.
 
-Karena kamu adalah salah satu alasan terbesar aku buat terus semangat setiap hari.
+Aku akan selalu berusaha membuat kamu tersenyum setiap hari.
+
+<br><br>
+
+Semoga hubungan kita semakin kuat.
+
+Semoga kita bisa terus bersama.
+
+Semoga semua doa baik kita dikabulkan.
 
 <br><br>
 
@@ -126,3 +130,87 @@ I Love You So Much ❤️
 </div>
 
 </div>
+<!-- ========================= -->
+<!-- Music Player -->
+<!-- ========================= -->
+
+<div class="music-player">
+
+    <div class="music-info">
+
+        <div class="music-cover">
+            🎵
+        </div>
+
+        <div class="music-text">
+
+            <h4>Our Song 💖</h4>
+
+            <span>Forever With You</span>
+
+        </div>
+
+    </div>
+
+    <div class="music-controls">
+
+        <button id="prevBtn">
+            ⏮
+        </button>
+
+        <button id="playPauseBtn">
+            ▶
+        </button>
+
+        <button id="nextBtn">
+            ⏭
+        </button>
+
+    </div>
+
+    <div class="progress-box">
+
+        <span id="currentTime">
+
+            00:00
+
+        </span>
+
+        <input
+            type="range"
+            id="progress"
+            min="0"
+            max="100"
+            value="0">
+
+        <span id="duration">
+
+            00:00
+
+        </span>
+
+    </div>
+
+</div>
+
+</section>
+
+<audio id="bgm">
+
+    <source
+        src="assets/ssstik.io_1785539039108.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+<footer>
+
+Made with ❤️ by Mou
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
