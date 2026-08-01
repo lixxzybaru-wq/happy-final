@@ -1,7 +1,7 @@
-/* ===========================
-   happy-final-v2
-   created with love ❤️
-=========================== */
+/* =========================================
+   Happy Final v3
+   Made with ❤️
+========================================= */
 
 *{
     margin:0;
@@ -17,25 +17,23 @@ body{
 
     font-family:'Poppins',sans-serif;
 
-    background:
-    linear-gradient(
-        180deg,
-        #ffd6e8,
-        #ffe9f3,
-        #fff7fb
-    );
-
     min-height:100vh;
 
     overflow-x:hidden;
 
-    color:#444;
+    background:
+    linear-gradient(
+    180deg,
+    #ffd6e7 0%,
+    #ffe8f2 45%,
+    #fff7fb 100%);
+
+    color:#555;
 }
 
-
-/* ===========================
-        floating hearts
-=========================== */
+/* ===============================
+      Floating Hearts
+================================ */
 
 .hearts{
 
@@ -43,18 +41,17 @@ body{
 
     inset:0;
 
-    pointer-events:none;
-
     overflow:hidden;
+
+    pointer-events:none;
 
     z-index:0;
 
 }
 
-
-/* ===========================
-        landing
-=========================== */
+/* ===============================
+        Landing Page
+================================ */
 
 #landing{
 
@@ -68,44 +65,54 @@ body{
 
     justify-content:center;
 
-    padding:25px;
+    padding:30px;
 
 }
 
+.landing-card{
 
-.container{
+    width:100%;
+
+    max-width:470px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.45);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:35px;
+
+    padding:45px 35px;
+
+    box-shadow:
+
+    0 20px 60px
+    rgba(255,120,180,.25);
 
     position:relative;
 
     z-index:2;
 
-    width:100%;
-
-    max-width:420px;
-
-    text-align:center;
-
 }
 
+.landing-card h4{
 
-.small{
-
-    color:#ff5f9e;
-
-    margin-bottom:15px;
+    color:#ff5f9f;
 
     font-size:18px;
 
+    margin-bottom:18px;
+
 }
 
-
-h1{
+.landing-card h1{
 
     font-family:'Pacifico',cursive;
 
     color:#ff4f95;
 
-    font-size:42px;
+    font-size:46px;
 
     line-height:1.2;
 
@@ -113,8 +120,7 @@ h1{
 
 }
 
-
-.subtitle{
+.landing-card p{
 
     color:#777;
 
@@ -124,26 +130,23 @@ h1{
 
 }
 
-
-/* ===========================
-          gift
-=========================== */
+/* ===============================
+        Gift Box
+================================ */
 
 #giftBox{
 
-    margin-top:45px;
+    margin-top:40px;
 
-    animation:
-    bounce 2s infinite;
+    animation:bounce 2s infinite;
 
 }
 
-
 #giftBox img{
 
-    width:180px;
+    width:190px;
 
-    transition:.4s;
+    transition:.35s;
 
     cursor:pointer;
 
@@ -151,36 +154,33 @@ h1{
 
     drop-shadow(
     0 15px 30px
-    rgba(255,70,150,.25)
-    );
+    rgba(255,80,160,.3));
 
 }
-
 
 #giftBox img:hover{
 
     transform:
+
     scale(1.08);
 
 }
 
-
-/* ===========================
-          button
-=========================== */
+/* ===============================
+          Button
+================================ */
 
 button{
-
-    margin-top:40px;
 
     border:none;
 
     outline:none;
 
-    padding:
+    cursor:pointer;
 
-    18px
-    40px;
+    margin-top:35px;
+
+    padding:18px 40px;
 
     border-radius:999px;
 
@@ -188,9 +188,8 @@ button{
 
     linear-gradient(
     90deg,
-    #ff75b7,
-    #ff9dca
-    );
+    #ff74b8,
+    #ff98cb);
 
     color:white;
 
@@ -198,247 +197,19 @@ button{
 
     font-weight:600;
 
-    cursor:pointer;
+    transition:.35s;
 
     box-shadow:
 
-    0 10px 30px
-
-    rgba(
-    255,
-    80,
-    150,
-    .35);
-
-    transition:.35s;
+    0 12px 28px
+    rgba(255,90,170,.35);
 
 }
-
 
 button:hover{
 
     transform:
 
-    translateY(-4px);
-
-}
-
-
-/* ===========================
-      letter page
-=========================== */
-
-#letterPage{
-
-    display:none;
-
-    min-height:100vh;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:25px;
-
-}
-
-
-.card{
-
-    width:100%;
-
-    max-width:950px;
-
-    display:flex;
-
-    gap:30px;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:
-
-    rgba(255,255,255,.55);
-
-    backdrop-filter:
-
-    blur(18px);
-
-    border-radius:35px;
-
-    padding:35px;
-
-    box-shadow:
-
-    0 25px 60px
-
-    rgba(255,120,170,.2);
-
-}
-
-
-/* ===========================
-        photo
-=========================== */
-
-.photo{
-
-    flex:1;
-
-}
-
-
-.photo img{
-
-    width:100%;
-
-    border-radius:25px;
-
-    border:10px solid white;
-
-    box-shadow:
-
-    0 15px 35px
-
-    rgba(0,0,0,.12);
-
-}
-
-
-/* ===========================
-       letter
-=========================== */
-
-.letter{
-
-    flex:1.2;
-
-}
-
-
-.letter h2{
-
-    font-family:'Pacifico',cursive;
-
-    color:#ff4f95;
-
-    font-size:34px;
-
-    margin-bottom:20px;
-
-}
-
-
-#typingText{
-
-    color:#666;
-
-    line-height:34px;
-
-    font-size:17px;
-
-}
-
-
-.letter h4{
-
-    margin-top:35px;
-
-    color:#ff4f95;
-
-    font-size:25px;
-
-}
-
-
-/* ===========================
-       animation
-=========================== */
-
-@keyframes bounce{
-
-0%,100%{
-
-transform:
-translateY(0);
-
-}
-
-50%{
-
-transform:
-translateY(-15px);
-
-}
-
-}
-
-
-/* ===========================
-      mobile
-=========================== */
-
-@media(max-width:768px){
-
-.card{
-
-flex-direction:column;
-
-padding:25px;
-
-}
-
-.photo{
-
-width:100%;
-
-}
-
-.photo img{
-
-max-width:320px;
-
-margin:auto;
-
-display:block;
-
-}
-
-h1{
-
-font-size:33px;
-
-}
-
-.subtitle{
-
-font-size:16px;
-
-line-height:28px;
-
-}
-
-button{
-
-width:100%;
-
-}
-
-.letter h2{
-
-font-size:28px;
-
-text-align:center;
-
-}
-
-#typingText{
-
-font-size:16px;
-
-line-height:32px;
-
-}
+    translateY(-3px);
 
 }
