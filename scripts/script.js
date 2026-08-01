@@ -1,99 +1,207 @@
-// ============================
-// happy-final-v2
-// created with love ❤️
-// ============================
+// ===============================
+// Happy Final v3
+// ===============================
 
 const landing = document.getElementById("landing");
 const letterPage = document.getElementById("letterPage");
+
 const openGift = document.getElementById("openGift");
 const giftBox = document.getElementById("giftBox");
+
 const bgm = document.getElementById("bgm");
+
 const typingText = document.getElementById("typingText");
 
-// sembunyikan surat saat awal
-letterPage.style.display = "none";
+const playPauseBtn = document.getElementById("playPauseBtn");
+const progress = document.getElementById("progress");
+const currentTime = document.getElementById("currentTime");
+const duration = document.getElementById("duration");
 
-// ============================
-// buka hadiah
-// ============================
+// ===============================
+// Isi Surat
+// ===============================
 
-openGift.addEventListener("click", () => {
+const message = `
+Happy National Girlfriend Day sayangkuu ❤️
 
-    // animasi kado
-    giftBox.style.transform = "scale(1.2) rotate(8deg)";
-    giftBox.style.transition = ".5s";
+Makasih yaa karena udah hadir di hidup aku.
 
-    // putar musik
-    bgm.volume = 0.5;
+Makasih udah selalu jadi rumah paling nyaman buat aku.
 
-    bgm.play().catch(() => {
-        console.log("musik membutuhkan interaksi pengguna");
-    });
+Aku bersyukur banget bisa kenal sama kamu.
 
-    // confetti
-    if (typeof confetti === "function") {
+Semoga senyum kamu ga pernah hilang.
 
-        confetti({
-            particleCount: 200,
-            spread: 120,
-            origin: {
-                y: 0.6
-            }
-        });
+Semoga semua mimpi kamu tercapai.
 
-    }
+Semoga kita selalu saling jaga.
 
-    setTimeout(() => {
+Aku mungkin belum sempurna.
 
-        landing.style.display = "none";
+Tapi aku akan selalu berusaha menjadi yang terbaik buat kamu.
 
-        letterPage.style.display = "flex";
+Aku akan selalu berusaha membuat kamu tersenyum setiap hari.
 
-        startTyping();
+Semoga hubungan kita semakin kuat.
 
-    }, 1200);
+Semoga kita bisa terus bersama.
 
-});
+I Love You So Much ❤️
+`;
 
-
-// ============================
-// efek mengetik
-// ============================
-
-const fullText = typingText.innerHTML;
+// ===============================
+// Typing Effect
+// ===============================
 
 typingText.innerHTML = "";
 
 let index = 0;
 
-function startTyping() {
+function typeLetter(){
 
-    typingText.innerHTML = "";
+    if(index < message.length){
 
-    index = 0;
+        if(message.charAt(index) === "\n"){
 
-    typing();
+            typingText.innerHTML += "<br>";
 
-}
+        }else{
 
-function typing() {
+            typingText.innerHTML += message.charAt(index);
 
-    if (index < fullText.length) {
-
-        typingText.innerHTML += fullText.charAt(index);
+        }
 
         index++;
 
-        setTimeout(typing, 18);
+        setTimeout(typeLetter,35);
 
     }
 
 }
 
+// ===============================
+// Open Gift
+// ===============================
 
-// ============================
-// floating hearts
-// ============================
+openGift.addEventListener("click",()=>{
+
+    landing.style.display="none";
+
+    letterPage.style.display="flex";
+
+    bgm.play();
+
+    typeLetter();
+
+    if(typeof confetti==="function"){
+
+        confetti({
+
+            particleCount:180,
+
+            spread:120,
+
+            origin:{y:.6}
+
+        });
+
+    }
+
+});
+
+// ===============================
+// Music Player
+// ===============================
+
+bgm.volume = 0.6;
+
+playPauseBtn.innerHTML = "⏸";
+
+playPauseBtn.addEventListener("click",()=>{
+
+    if(bgm.paused){
+
+        bgm.play();
+
+        playPauseBtn.innerHTML="⏸";
+
+    }else{
+
+        bgm.pause();
+
+        playPauseBtn.innerHTML="▶";
+
+    }
+
+});
+
+// ===============================
+// Progress Bar
+// ===============================
+
+bgm.addEventListener("loadedmetadata",()=>{
+
+    duration.textContent=formatTime(bgm.duration);
+
+});
+
+bgm.addEventListener("timeupdate",()=>{
+
+    progress.value=(bgm.currentTime/bgm.duration)*100||0;
+
+    currentTime.textContent=formatTime(bgm.currentTime);
+
+});
+
+progress.addEventListener("input",()=>{
+
+    bgm.currentTime=(progress.value/100)*bgm.duration;
+
+});
+
+function formatTime(time){
+
+    if(isNaN(time)) return "00:00";
+
+    const min=Math.floor(time/60);
+
+    const sec=Math.floor(time%60);
+
+    return `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+
+}
+
+// ===============================
+// Previous & Next
+// ===============================
+
+document
+.getElementById("prevBtn")
+.addEventListener("click",()=>{
+
+    bgm.currentTime=0;
+
+});
+
+document
+.getElementById("nextBtn")
+.addEventListener("click",()=>{
+
+    bgm.currentTime=0;
+
+    bgm.play();
+
+});
+
+// ===============================
+// Auto Loop
+// ===============================
+
+bgm.loop=true;
+
+// ===============================
+// Floating Hearts
+// ===============================
 
 function createHeart() {
 
@@ -102,46 +210,32 @@ function createHeart() {
     heart.innerHTML = "💖";
 
     heart.style.position = "fixed";
-
     heart.style.left = Math.random() * 100 + "vw";
-
-    heart.style.bottom = "-50px";
-
-    heart.style.fontSize = (20 + Math.random() * 25) + "px";
-
-    heart.style.opacity = "0.8";
-
+    heart.style.top = "100vh";
+    heart.style.fontSize = (18 + Math.random() * 18) + "px";
     heart.style.pointerEvents = "none";
-
     heart.style.zIndex = "999";
-
-    heart.style.transition = "transform 6s linear, opacity 6s";
+    heart.style.transition = "transform 6s linear, opacity 6s linear";
+    heart.style.opacity = "1";
 
     document.body.appendChild(heart);
 
-    requestAnimationFrame(() => {
-
-        heart.style.transform =
-            `translateY(-120vh) rotate(${Math.random()*360}deg)`;
-
+    setTimeout(() => {
+        heart.style.transform = `translateY(-120vh) rotate(${Math.random()*360}deg)`;
         heart.style.opacity = "0";
-
-    });
+    }, 50);
 
     setTimeout(() => {
-
         heart.remove();
-
     }, 6000);
 
 }
 
-setInterval(createHeart, 400);
+setInterval(createHeart, 800);
 
-
-// ============================
-// sparkle kecil
-// ============================
+// ===============================
+// Sparkle
+// ===============================
 
 function sparkle() {
 
@@ -150,71 +244,51 @@ function sparkle() {
     star.innerHTML = "✨";
 
     star.style.position = "fixed";
-
-    star.style.left = Math.random()*100+"vw";
-
-    star.style.top = Math.random()*100+"vh";
-
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
     star.style.fontSize = "18px";
-
-    star.style.opacity = "0";
-
-    star.style.transition = ".8s";
-
     star.style.pointerEvents = "none";
+    star.style.opacity = "1";
+    star.style.zIndex = "998";
 
     document.body.appendChild(star);
 
-    requestAnimationFrame(()=>{
+    setTimeout(() => {
 
-        star.style.opacity="1";
+        star.style.transition = "all .8s";
 
-    });
+        star.style.opacity = "0";
 
-    setTimeout(()=>{
+        star.style.transform = "scale(2)";
 
-        star.style.opacity="0";
+    }, 50);
 
-    },600);
-
-    setTimeout(()=>{
+    setTimeout(() => {
 
         star.remove();
 
-    },1200);
+    }, 900);
 
 }
 
-setInterval(sparkle,700);
+setInterval(sparkle, 1200);
 
+// ===============================
+// Music End
+// ===============================
 
-// ============================
-// klik foto
-// ============================
+bgm.addEventListener("ended", () => {
 
-const photo = document.querySelector(".photo img");
-
-photo.addEventListener("click",()=>{
-
-    photo.style.transform="scale(1.08)";
-
-    setTimeout(()=>{
-
-        photo.style.transform="scale(1)";
-
-    },300);
+    playPauseBtn.innerHTML = "▶";
 
 });
 
+// ===============================
+// Page Loaded
+// ===============================
 
-// ============================
-// musik selesai
-// ============================
+window.addEventListener("load", () => {
 
-bgm.addEventListener("ended",()=>{
-
-    bgm.currentTime = 0;
-
-    bgm.play();
+    console.log("Happy Final v3 Loaded ❤️");
 
 });
